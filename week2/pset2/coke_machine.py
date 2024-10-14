@@ -1,16 +1,17 @@
 amount_due = 50
-calc = 0
+still_due = 0
 
-while calc < amount_due:
-    print(f"Still due: {amount_due - calc}")
-    coin = int(input("insert coin: "))
-    if coin < amount_due:
-        calc += coin
-    elif coin > amount_due:
-        calc -= coin
-
-
+while still_due <= amount_due:
+    coin = int(input("Insert coin: "))
+    if coin in [5, 10, 25, 50]:
+        still_due += coin
+        print(f"Insert more coin: {amount_due - still_due}")
+        if still_due == amount_due:
+            break
+        else:
+            (still_due + coin) >= amount_due
+            change = (still_due + coin) - amount_due
     else:
-        calc += coin
+        print("Insert 5, 10, 25 or 50 cents only")
 
-print(f"Balance paid, your change: {calc-amount_due}")
+print(f"Balance paid, your change {change - amount_due}")
